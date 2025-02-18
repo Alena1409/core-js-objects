@@ -60,10 +60,16 @@ function mergeObjects(objects) {
  *    removeProperties({name: 'John', age: 30, city: 'New York'}, ['age']) => {name: 'John', city: 'New York'}
  *
  */
-function removeProperties(/* obj, keys */) {
-  throw new Error('Not implemented');
+function removeProperties(obj, keys) {
+  const newObj = { ...obj };
+  const arrKeysOfObj = Object.keys(obj);
+  for (let i = 0; i < keys.length; i += 1) {
+    if (arrKeysOfObj.includes(keys[i])) {
+      delete newObj[keys[i]];
+    }
+  }
+  return newObj;
 }
-
 /**
  * Compares two source objects. Returns true if the objects are equal and false otherwise.
  * There are no nested objects.
